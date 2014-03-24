@@ -22,7 +22,9 @@ Aborted attempts:
 2. Started with [Vagrant Cloud image with docker pre-installed](https://vagrantcloud.com/stamm/precise64-docker)
 3. Got familiar with the docker commands
 4. Tried out some adhoc experiments working through a bash shell "-t -i" and the using commit.
-5. Created an image that ran Apache2 
+5. Created an image that ran [Apache2](https://github.com/alecl/docker-experiments/tree/master/apache2) 
+6. Looked at [Serf](http://www.serfdom.io/) and [Fig](http://orchardup.github.io/fig/index.html) but seems a bit too bleeding edge for now for my needs.
+
 
 ### Repo Contents
 
@@ -32,7 +34,6 @@ Aborted attempts:
 3. Refactored to keep it generic and pretty standalone
 4. Added a sample index.html so it's ready to test out of the box
 5. Added some sample scripts that show running multiple instances with linked document roots to vagrant host machine and Apache logs to VM itself for easy viewing
-6. Future - Use Supervi
 
 #### Windows Tips/Utils (in progress - not added yet)
 1. TODO
