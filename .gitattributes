@@ -20,3 +20,6 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# Keep shell scripts unix style
+*.sh eol=lf
