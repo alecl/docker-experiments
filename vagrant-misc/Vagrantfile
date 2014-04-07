@@ -20,11 +20,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :public_network
   config.ssh.forward_agent = true  
 
-  #didn't work as these need to be run in session and not before.  Just put the alias in .bashrc
-  #config.vm.provision "shell", :path => "aliases.sh"
-  #
-  #config.vm.provision "shell",
-  #  inline: "alias dl='docker ps -l -q'"
+  # Add vagrant user to docker group to avoid need for sudo and add an alias dl for the last image's id
+  config.vm.provision "shell", :path => "vinit.sh"
   
   config.vm.provider "virtualbox" do |vb|
   #   # Don't boot with headless mode
