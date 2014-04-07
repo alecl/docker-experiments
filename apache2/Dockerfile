@@ -1,4 +1,4 @@
-# A basic apache server
+# A basic apache server building on the alecl/base image.  Make sure that's run first.
 
 # Simplest usage map port 80 from container to host and start server.  Hit http://localhost to see "Apache Dock in Docker Container"
 # sudo docker run -d -p 80:80 alecl/apache2
@@ -8,15 +8,12 @@
 
 # To add a second server is just as easy
 # sudo docker run -d -p 40002:80 -name apache-b -v /vagrant/htdocs/apache-b:/var/www -v ~/containerlogs/apache-b:/var/log/apache2 alecl/apache2
-FROM ubuntu:precise
+FROM alecl/base
 
 MAINTAINER Alec Lazarescu version: 1.0
 
-#This is nice in theory but now you're no longer running the same image every time.  Needs more thought on how best to version perhaps in a parent container
 RUN apt-get update
 RUN apt-get install -y apache2 
-#These can be handy but I will likely pull them into a base package later
-#RUN apt-get install curl && apt-get install lynx
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 #Add a sample file for easier verification that you're looking at the right web server
@@ -24,5 +21,5 @@ ADD index.html /var/www/
 
 EXPOSE 80
 
-# This keeps Apache running in the foreground.  If you try to just start the service instead it will go in the background and the container will stop immediately.
-CMD ["apachectl", "-X"]
+# our base image uses supervisord to run sshd for general debugging plus whatever else we throw in this directory
+ADD apache-supervisor.conf /etc/supervisor/conf.d/

@@ -23,3 +23,4 @@
 
 # Keep shell scripts unix style
 *.sh eol=lf
+*.conf eol=lf
