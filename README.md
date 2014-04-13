@@ -34,6 +34,4 @@ Aborted attempts:
 3. Refactored to keep it generic and pretty standalone
 4. Added a sample index.html so it's ready to test out of the box
 5. Added some sample scripts that show running multiple instances with linked document roots to vagrant host machine and Apache logs to VM itself for easy viewing
-
-#### Windows Tips/Utils (in progress - not added yet)
-1. TODO
+6. Added a base image that this now inherits from

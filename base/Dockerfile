@@ -17,7 +17,6 @@ RUN mkdir -p /var/log/supervisor
 # our child config will go in this director
 RUN mkdir -p /etc/supervisor/conf.d
 ADD supervisord.conf /etc/supervisord.conf
-#ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # ssh server
 RUN apt-get -y install openssh-server
@@ -29,9 +28,10 @@ RUN locale-gen en_US en_US.UTF-8
 # Force a password of docker for the vagrant user for experiment/demo purposes.  Obviously DO NOT DO this for shared environments/production.
 RUN useradd -m -d /home/vagrant -s /bin/bash -p $(perl -e'print crypt("docker", "aaa")') vagrant
 RUN adduser vagrant sudo
+RUN echo %vagrant	ALL=NOPASSWD: ALL >> /etc/sudoers
 
 # useful utilities
-RUN apt-get -y install curl lynx unzip git jq
+RUN apt-get -y install curl lynx unzip git jq nano sshpass
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
